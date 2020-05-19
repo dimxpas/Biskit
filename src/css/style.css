@@ -1,0 +1,181 @@
+/* CSS */
+@font-face {
+    font-family: "BungeeInline";
+    src: url("../fonts/BungeeInline/BungeeInline-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Raleway";
+    src: url("../fonts/Raleway/Raleway-Light.ttf") format("truetype");
+}
+body {
+    background-image: url("../img/bord.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 20px;
+    color: #ffffff;
+    font-family: "Raleway";
+}
+
+h1,h2,h3 {
+    text-align: center; 
+    text-transform: uppercase;
+    font-family: "BungeeInline";
+}
+h1 {
+    font-size: 5em;
+}
+h2 {
+    font-size: 3em;
+}
+.title a {
+    color: #f0a637;
+    text-decoration: none;
+}
+.popular-title {
+    color: #499ce0;
+    /* text-shadow: 2px 2px 1px white; */
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3d7aca, 0 0 35px #3d7aca, 0 0 40px #3d7aca, 0 0 50px #3d7aca, 0 0 75px #3d7aca;
+}
+
+.title {
+    color: #f0a637;
+    -webkit-animation: neon 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon 1.5s ease-in-out infinite alternate;
+    animation: neon 1.5s ease-in-out infinite alternate;
+}
+.title2 {
+    color: #42c52e;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #42c52e, 0 0 35px #42c52e, 0 0 40px #42c52e, 0 0 50px #42c52e, 0 0 75px #42c52e;
+}
+/* .title2 {
+    color: #42c52e;
+    -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+    animation: neon2 1.5s ease-in-out infinite alternate;
+} */
+.title3 {
+    color: #3d7aca;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3d7aca, 0 0 35px #3d7aca, 0 0 40px #3d7aca, 0 0 50px #3d7aca, 0 0 75px #3d7aca;
+    /* -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon3 1.5s ease-in-out infinite alternate;
+    animation: neon3 1.5s ease-in-out infinite alternate; */
+}
+.classics_cocktails {
+    background-color: rgb(0, 0, 0);;
+    color: rgb(255, 255, 255);
+}
+.classics_cocktails:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+.popular-alcohol {
+    border-top: 2px solid #ffffff;
+}
+.center {
+    margin: 0 auto; 
+    display:none;
+}
+.row {
+    margin: 0px;
+    text-align: center;
+}
+.search {
+    text-transform: uppercase;
+    font-family: "BungeeInline";
+}
+#list_search {
+    cursor: pointer;
+}
+#list_search img {
+    filter: grayscale(1);
+}
+#list_search img:hover {
+    filter: none;
+}
+.nav-cocktails {
+    height: 40px;
+    border: 2px solid #ffffff;
+    line-height: 2.3;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: "BungeeInline";
+}
+.nav-cocktails:hover {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.instructions {
+    font-family: "BungeeInline";
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+@-webkit-keyframes neon {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF9900, 0 0 70px #FF9900, 0 0 80px #FF9900, 0 0 100px #FF9900, 0 0 150px #FF9900;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF9900, 0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
+    }
+}
+@keyframes neon {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF9900, 0 0 70px #FF9900, 0 0 80px #FF9900, 0 0 100px #FF9900, 0 0 150px #FF9900;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF9900, 0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
+    }
+}
+@-webkit-keyframes neon2 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #3dac2c, 0 0 70px #3dac2c, 0 0 80px #3dac2c, 0 0 100px #3dac2c, 0 0 150px #3dac2c;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3dac2c, 0 0 35px #3dac2c, 0 0 40px #3dac2c, 0 0 50px #3dac2c, 0 0 75px #3dac2c;
+    }
+}
+@keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #3dac2c, 0 0 70px #3dac2c, 0 0 80px #3dac2c, 0 0 100px #3dac2c, 0 0 150px #3dac2c;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3dac2c, 0 0 35px #3dac2c, 0 0 40px #3dac2c, 0 0 50px #3dac2c, 0 0 75px #3dac2c;
+    }
+}
+@-webkit-keyframes neon3 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #3d7aca, 0 0 70px #3d7aca, 0 0 80px #3d7aca, 0 0 100px #3d7aca, 0 0 150px #3d7aca;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3d7aca, 0 0 35px #3d7aca, 0 0 40px #3d7aca, 0 0 50px #3d7aca, 0 0 75px #3d7aca;
+    }
+}
+@keyframes neon3 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #3d7aca, 0 0 70px #3d7aca, 0 0 80px #3d7aca, 0 0 100px #3d7aca, 0 0 150px #3d7aca;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #3d7aca, 0 0 35px #3d7aca, 0 0 40px #3d7aca, 0 0 50px #3d7aca, 0 0 75px #3d7aca;
+    }
+}
+@media (max-width: 990px) {
+    body {
+        background-color: #212121;
+        background-image: none;
+    }
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.7em;
+    }
+    .logo-header {
+        border-right: none;
+    }
+    .search-header {
+        border-left: none;
+    }
+}
