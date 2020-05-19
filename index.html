@@ -16,12 +16,14 @@
     <!-- header -->
     <h1 class="title2 pt-2 pb-4">BISKIT</h1>
 
-    <div id="nb_person">
+    <!-- <div id="nb_person">
       <label for="nb_player"class="mr-2">Nombre de joueurs</label><input size="5" id='nb_player'><button class="ml-2" id='valid_nb_player'>Valider</button>
       <div id="enter_players"></div>
-    </div>
+    </div> -->
 
     <div style="text-align:center;" class="pt-4" id="start_play">
+      <h3 id="message"></h3>
+      
       <video width="640" height="480" id="luck" class="center">
         <source src="src/videos/la-chatte.mp4" type="video/mp4">
         <source src="src/videos/la-chatte.ogg" type="video/ogg">
@@ -30,11 +32,11 @@
         <source src="src/videos/duduel.mp4" type="video/mp4">
         <source src="src/videos/duduel.ogg" type="video/ogg">
       </video>
-      <h3 id="message"></h3>
+      
       <div>
         <img id="dice-1" width="100"><img id="dice-2" class="ml-4" width="100"><br>
         <button class="btn-light mt-3" id="roll">Lancer les dés</button>
-        <p id='result_dice'></p>
+        <!-- <p id='result_dice'></p> -->
       </div>
     </div>
 
@@ -82,23 +84,41 @@
           setTimeout(function(){ $("#luck").css("display", "block");document.getElementById('luck').play(); }, 1300);
           setTimeout(function(){ $("#luck").css("display", "none"); }, 4300);
         } else if (result1 == result2){
-          setTimeout(function(){ $("#message").html("Distribue "+result1+" gorgées"); }, 1300);
+          if (result1 == 5){
+            setTimeout(function(){ $("#message").html("Bois une gorgée et distribues "+result1+" gorgées"); }, 1300);
+          } else if(result1 == 3){
+            setTimeout(function(){ $("#message").html("Distribue "+result1+" gorgées, LA POISSE !!"); }, 1300);
+          } else {
+            setTimeout(function(){ $("#message").html("Distribue "+result1+" gorgées"); }, 1300);
+          }
         } else if (result1 == 1 && result2 == 2 || result2 == 1 && result1 == 2){
           $("#message").html("Duel");
           setTimeout(function(){ $("#duel").css("display", "block");document.getElementById('duel').play(); }, 1300);
           setTimeout(function(){ $("#duel").css("display", "none"); }, 4400);
         } else if (result1 + result2 == 7){
-          setTimeout(function(){  $("#message").html("BISKIT ! Tout le monde boit"); }, 1300);
+          if(result1 == 3 || result2 == 3){
+            setTimeout(function(){ $("#message").html("BISKIT ! Tout le monde boit, LA POISSE !!"); }, 1300);
+          } else {
+            setTimeout(function(){  $("#message").html("BISKIT ! Tout le monde boit"); }, 1300);
+          }
           // setTimeout(function(){ $("#duel").css("display", "block");document.getElementById('duel').play(); }, 1500);
           // setTimeout(function(){ $("#duel").css("display", "none"); }, 4600);
         } else if (result1 + result2 == 9){
-          setTimeout(function(){  $("#message").html("Le joueur précèdent boit"); }, 1300);
+          if(result1 == 3 || result2 == 3){
+            setTimeout(function(){ $("#message").html("Le joueur précèdent boit, LA POISSE !!"); }, 1300);
+          } else {
+            setTimeout(function(){  $("#message").html("Le joueur précèdent boit"); }, 1300);
+          }
         } else if (result1 + result2 == 10){
           setTimeout(function(){  $("#message").html("Bois une gorgée"); }, 1300);
         } else if (result1 + result2 == 11){
           setTimeout(function(){  $("#message").html("Le joueur suivant boit"); }, 1300);
         } else {
-          $("#message").html("");
+          if(result1 == 3 || result2 == 3){
+            setTimeout(function(){ $("#message").html("LA POISSE !!"); }, 1300);
+          } else {
+            $("#message").html("");
+          }
         }
         a=1;
         while(a < 7) {
