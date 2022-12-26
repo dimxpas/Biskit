@@ -2,7 +2,6 @@ jQuery(document).ready(function () {
     $("#roll").on("click", function () {
         result1 = Math.round(Math.random() * 5) + 1;
         result2 = Math.round(Math.random() * 5) + 1;
-        console.log(result1 + " " + result2);
         $("#result_dice").html(result1 + " " + result2);
         if (result1 == 6 && result2 == 6) {
             setTimeout(function () { $("#message").html("Distribues " + result1 + " gorgées, inventes une nouvelle règle et on change de sens"); }, 1300);
