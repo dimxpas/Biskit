@@ -433,6 +433,25 @@ a {
 	}
 }
 
+.close {
+	float: right;
+	cursor: pointer;
+	font-size: 1em;
+	transition: all 0.3s ease-out;
+	width: 28px;
+	height: 28px;
+	font-family: 'Font Awesome 6 Brands';
+	border-radius: 50%;
+	border: 2px solid transparent;
+	text-align: center;
+}
+
+.close:hover {
+	-webkit-transform: scale(0.8) rotateZ(90deg);
+	border-radius: 50%;
+	border: 2px solid;
+}
+
 @media (max-width: 990px) {
     body {
         background-color: #212121;
