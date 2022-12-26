@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
     $("#roll").on("click", function () {
-        result1 = Math.round(Math.random() * 5) + 1;
-        result2 = Math.round(Math.random() * 5) + 1;
+        result1 = randomDice();
+        result2 = randomDice();
         $("#result_dice").html(result1 + " " + result2);
         if (result1 == 6 && result2 == 6) {
             setTimeout(function () { $("#message").html("Distribues " + result1 + " gorgées, inventes une nouvelle règle et on change de sens"); }, 1300);
@@ -48,20 +48,18 @@ jQuery(document).ready(function () {
             if (result1 == a) {
                 b = a;
                 // utilisation de fontawesome
-                setTimeout(function () { $("#dice_1").html(number_to_letter(2)); }, 200);
-                setTimeout(function () { $("#dice_1").html(number_to_letter(1)) }, 400);
-                setTimeout(function () { $("#dice_1").html(number_to_letter(6)); }, 600);
-                setTimeout(function () { $("#dice_1").html(number_to_letter(2)); }, 800);
-                setTimeout(function () { $("#dice_1").html(number_to_letter(b)); }, 1000);
+                setTimeout(function () { $("#dice_1").html(number_to_letter(randomDice())); }, 200);
+                setTimeout(function () { $("#dice_1").html(number_to_letter(randomDice())) }, 400);
+                setTimeout(function () { $("#dice_1").html(number_to_letter(randomDice())); }, 600);
+                setTimeout(function () { $("#dice_1").html(number_to_letter(b)); }, 800);
             }
             if (result2 == a) {
                 c = a;
                 // utilisation de fontawesome
-                setTimeout(function () { $("#dice_2").html(number_to_letter(3)); }, 200);
-                setTimeout(function () { $("#dice_2").html(number_to_letter(5)) }, 400);
-                setTimeout(function () { $("#dice_2").html(number_to_letter(1)); }, 600);
-                setTimeout(function () { $("#dice_2").html(number_to_letter(4)); }, 800);
-                setTimeout(function () { $("#dice_2").html(number_to_letter(c)); }, 1000);
+                setTimeout(function () { $("#dice_2").html(number_to_letter(randomDice())); }, 200);
+                setTimeout(function () { $("#dice_2").html(number_to_letter(randomDice())) }, 400);
+                setTimeout(function () { $("#dice_2").html(number_to_letter(randomDice())); }, 600);
+                setTimeout(function () { $("#dice_2").html(number_to_letter(c)); }, 800);
             }
             a++;
         }
@@ -93,6 +91,10 @@ function show_rules() {
     $("#biskit_rules").removeClass("hidden fade-out").addClass("fade-in");
     $(".modal-content").removeClass("move-down").addClass("move-up");
     $("body").css("overflow", "hidden");
+}
+
+function randomDice() {
+    return Math.round(Math.random() * 5) + 1;
 }
 
 function number_to_letter(dice_number) {
