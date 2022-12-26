@@ -1,29 +1,25 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
-  <head>
-    <!-- <meta charset="UTF-8"><meta http-equiv="Content-type" content="text/html; charset=utf-8"/> -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="src/css/style.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/308913b5fd.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="src/js/global.js"></script>
+  <title>BISKIT</title>
+</head>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="src/css/style.css">
-
-    <title>BISKIT</title>
-  </head>
-  <body>
-    <!-- header -->
+<body>
+  <div class="container">
+    <div id="biskit_rules_btn" onclick='show_rules()'><i class="fa-solid fa-circle-info"></i></div>
     <h1 class="title2 pt-2 pb-4">BISKIT</h1>
-
-    <!-- <div id="nb_person">
-      <label for="nb_player"class="mr-2">Nombre de joueurs</label><input size="5" id='nb_player'><button class="ml-2" id='valid_nb_player'>Valider</button>
-      <div id="enter_players"></div>
-    </div> -->
-
+  
     <div style="text-align:center;" class="pt-4" id="start_play">
-      <h3 id="message"></h3>
-      
+      <h3 id="message" class="mb-3"> </h3>
+  
       <video width="640" height="480" id="luck" class="center">
         <source src="src/videos/la-chatte.mp4" type="video/mp4">
         <source src="src/videos/la-chatte.ogg" type="video/ogg">
@@ -32,19 +28,18 @@
         <source src="src/videos/duduel.mp4" type="video/mp4">
         <source src="src/videos/duduel.ogg" type="video/ogg">
       </video>
-      
+  
       <div>
-        <img id="dice-1" width="100"><img id="dice-2" class="ml-4" width="100"><br>
-        <button class="btn-light mt-3" id="roll">Lancer les dés</button>
-        <!-- <p id='result_dice'></p> -->
+        <div class="dices-block"><span id="dice_1" width="100"></span><span id="dice_2" class="ml-4" width="100"></span></div>
+        <button class="btn-light mt-3" id="roll">Lancer</button>
       </div>
     </div>
-
+  
     
-    <!-- <div class="row">
-      <div class="col-sm-6">
-        <h3 class="title3">Les règles du Biskit</h3>
-        <p>Le Biskit est comme tu t'en doutes un jeux d'alcool, il se joue avec des dès et parfois aussi avec des cartes, dans cette version nous jouerons uniquement avec des dès.</p>
+    <div id="biskit_rules" class="modal hidden">
+      <div class="modal-content">
+        <h3 class="title mb-4">Les règles du Biskit</h3>
+        <p>Tout d'abord, le Biskit est un jeux d'alcool, il se joue avec des dès et parfois aussi avec des cartes.<br>Dans cette version nous jouerons uniquement avec des dès.</p>
         <p>Maintenant passons aux règles :</p>
         <ul style="text-align:left">
           <li>Le premier lancé de dès indiquera le premier joueur qui commencera.</li>
@@ -62,87 +57,13 @@
           <li>Tant que les dès indique une des règles ci-dessus alors c'est toujours au même joueur de les lancer.</li>
           <li>Si les dès lancés n'entraîne pas une gorgée alors c'est au tour du joueur suivant.</li>
         </ul>
-        <p>Tu n'auras donc pour jouer seulement besoin d'amis et d'alcools, je m'occupe du reste mais soit attentif sinon tu vas vite finir bourré !</p>
-      </div> 
-      <div class="col-sm-6"> -->
+        <p>Tu n'auras donc pour jouer seulement besoin d'amis et d'alcools, je m'occupe du reste mais soit attentif sinon tu vas vite finir pompette !</p>
+        <p>Si t'es en manque d'inspiration pour l'alcool, tu peux retrouver quelques recettes sympathiques <a title='ShakerClub' href='https://dimxpas.github.io/ShakerClub/'>ici</a>.</p>
+        <p><i class="fa-solid fa-wine-glass"></i> L'abus d'alcool est dangereux pour la santé. A consommer avec modération.</p>
+      </div>
+    </div> 
+  </div>
 
-      </div> 
-    </div>
+</body>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <script>
-      $("#roll").on("click", function(){
-        result1 = Math.round(Math.random() * 5) + 1;
-        result2 = Math.round(Math.random() * 5) + 1;
-//         console.log(result1+" "+result2);
-        $("#result_dice").html(result1+" "+result2);
-        if (result1 == 6 && result2 == 6){
-          setTimeout(function(){ $("#message").html("Distribues "+result1+" gorgées, inventes une nouvelle règle et on change de sens"); }, 1300);
-          setTimeout(function(){ $("#luck").css("display", "block");document.getElementById('luck').play(); }, 1300);
-          setTimeout(function(){ $("#luck").css("display", "none"); }, 4300);
-        } else if (result1 == result2){
-          if (result1 == 5){
-            setTimeout(function(){ $("#message").html("Bois une gorgée et distribues "+result1+" gorgées"); }, 1300);
-          } else if(result1 == 3){
-            setTimeout(function(){ $("#message").html("Distribue "+result1+" gorgées, LA POISSE !!"); }, 1300);
-          } else {
-            setTimeout(function(){ $("#message").html("Distribue "+result1+" gorgées"); }, 1300);
-          }
-        } else if (result1 == 1 && result2 == 2 || result2 == 1 && result1 == 2){
-          $("#message").html("Duel");
-          setTimeout(function(){ $("#duel").css("display", "block");document.getElementById('duel').play(); }, 1300);
-          setTimeout(function(){ $("#duel").css("display", "none"); }, 4400);
-        } else if (result1 + result2 == 7){
-          if(result1 == 3 || result2 == 3){
-            setTimeout(function(){ $("#message").html("BISKIT ! Tout le monde boit, LA POISSE !!"); }, 1300);
-          } else {
-            setTimeout(function(){  $("#message").html("BISKIT ! Tout le monde boit"); }, 1300);
-          }
-          // setTimeout(function(){ $("#duel").css("display", "block");document.getElementById('duel').play(); }, 1500);
-          // setTimeout(function(){ $("#duel").css("display", "none"); }, 4600);
-        } else if (result1 + result2 == 9){
-          if(result1 == 3 || result2 == 3){
-            setTimeout(function(){ $("#message").html("Le joueur précèdent boit, LA POISSE !!"); }, 1300);
-          } else {
-            setTimeout(function(){  $("#message").html("Le joueur précèdent boit"); }, 1300);
-          }
-        } else if (result1 + result2 == 10){
-          setTimeout(function(){  $("#message").html("Bois une gorgée"); }, 1300);
-        } else if (result1 + result2 == 11){
-          setTimeout(function(){  $("#message").html("Le joueur suivant boit"); }, 1300);
-        } else {
-          if(result1 == 3 || result2 == 3){
-            setTimeout(function(){ $("#message").html("LA POISSE !!"); }, 1300);
-          } else {
-            $("#message").html("");
-          }
-        }
-        a=1;
-        while(a < 7) {
-          if(result1 == a){
-            b=a;
-            setTimeout(function(){ $("#dice-1").attr("src", "src/img/4.png"); }, 200);
-            setTimeout(function(){ $("#dice-1").attr("src", "src/img/1.png"); }, 400);
-            setTimeout(function(){ $("#dice-1").attr("src", "src/img/6.png"); }, 600);
-            setTimeout(function(){ $("#dice-1").attr("src", "src/img/2.png"); }, 800);
-            setTimeout(function(){ $("#dice-1").attr("src", "src/img/"+b+".png"); }, 1000);
-          }
-          if(result2 == a){
-            c=a;
-            setTimeout(function(){ $("#dice-2").attr("src", "src/img/2.png"); }, 200);
-            setTimeout(function(){ $("#dice-2").attr("src", "src/img/5.png"); }, 400);
-            setTimeout(function(){ $("#dice-2").attr("src", "src/img/1.png"); }, 600);
-            setTimeout(function(){ $("#dice-2").attr("src", "src/img/4.png"); }, 800);
-            setTimeout(function(){ $("#dice-2").attr("src", "src/img/"+c+".png"); }, 1000);
-          }
-          a++;
-        }
-        
-      });
-        
-    </script>
-  </body> 
 </html>
