@@ -67,6 +67,11 @@ jQuery(document).ready(function () {
         }
 
     });
+    
+    // Pour fermer la modal
+    $(".modal-content span.close").on("click", function() {
+        closeModal();
+    });
 });
 
 function closeModal() {
