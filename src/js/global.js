@@ -72,31 +72,84 @@ jQuery(document).ready(function () {
     });
 });
 
+// Ajout de joueurs
+function addPlayer() {
+    $(".add_player").before("<p class='biskit-player'><i class='fa-solid fa-user-pen mr-2'></i> <input type='text'> <i onclick=\"$(this).closest('p').remove();\" class='ml-2 fa-regular fa-trash-can'></i></p>");
+}
+// sélection des joueurs
+function checkPlayer() {
+    nb_player = $(".biskit-player").length;
+    error = false;
+    if (nb_player < 2) {
+        alert("Il faut 2 joueurs minimum !");
+    } else {
+        i = 0;
+        array_player = [];
+        while (i < nb_player) {
+            name_player = $(".biskit-player")[i].children[1].value;
+            array_player.push(name_player);
+            if (name_player == "") {
+                error = true;
+            }
+            i++;
+        }
+        if (error == true) {
+            alert("Veuillez choisir un nom pour tout les joueurs.");
+        } else {
+            $("#nb_person").addClass("hidden");
+            $("#dices_block, #players_btn").removeClass("hidden");
+            $("#roll").trigger("click");
+        }
+    }
+}
+// suppression d'un joueur
+function removePlayer() {
+    $(this).closest('p').remove();
+}
+// fermeture de la modal
 function closeModal() {
     $(".modal-content").removeClass("move-up").addClass("move-down");
-    $("#biskit_rules").removeClass("fade-in").addClass("fade-out");
+    $(".modal").removeClass("fade-in").addClass("fade-out");
     $("body").css("overflow", "auto");
     setTimeout(() => {
-        $("#biskit_rules").addClass("hidden");
+        $(".modal").addClass("hidden");
     }, 500);
 }
-
 window.onclick = function (event) {
-    if (event.target.id == "biskit_rules") {
+    if (event.target.classList[0] == "modal") {
         closeModal();
     }
 }
-
+// affichage des règles
 function show_rules() {
     $("#biskit_rules").removeClass("hidden fade-out").addClass("fade-in");
-    $(".modal-content").removeClass("move-down").addClass("move-up");
+    $("#biskit_rules .modal-content").removeClass("move-down").addClass("move-up");
     $("body").css("overflow", "hidden");
 }
-
+// affichage des joueurs
+function show_players() {
+    a = 0;
+    poisse_icon = "";
+    players_list = "";
+    while (a < nb_player) {
+        if (poisse == array_player[a]) {
+            poisse_icon = "<span title='La poisse'><i class='ml-2 fa-solid fa-wine-glass'></i></span>";
+        } else {
+            poisse_icon = "";
+        }
+        players_list += "<p><i class='fa-solid fa-user-pen mr-2'></i> <input disabled type='text' value='" + array_player[a] + "'>" + poisse_icon + "</p>";
+        a++;
+    }
+    $("#player_list").html(players_list);
+    $("#biskit_players").removeClass("hidden fade-out").addClass("fade-in");
+    $("#biskit_players .modal-content").removeClass("move-down").addClass("move-up");
+    $("body").css("overflow", "hidden");
+}
+// numéro random de 1 à 6
 function randomDice() {
     return Math.round(Math.random() * 5) + 1;
 }
-
+// affichage du dès avec fontawesome && traduction du nombre en lettre
 function number_to_letter(dice_number) {
     var numbers = ["one", "two", "three", "four", "five", "six"];
     return "<i class='fa-solid fa-dice-" + numbers[dice_number - 1] + "'></i>";
