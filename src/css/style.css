@@ -171,7 +171,8 @@ h2 {
 }
 
 h3 {
-	font-size: 2em;	
+	font-size: 2em;
+	font-weight: 600;
 }
 
 .title a {
@@ -193,6 +194,22 @@ h3 {
 	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #42c52e, 0 0 35px #42c52e, 0 0 40px #42c52e, 0 0 50px #42c52e, 0 0 75px #42c52e;
 }
 
+#players_btn {
+	float: left;
+	font-size: 1.5em;
+    cursor: pointer;
+}
+
+.add_player {
+	font-size: 1.5em;
+	cursor: pointer;
+}
+
+.fa-trash-can {
+	color: rgb(131, 22, 22);
+	cursor: pointer;
+}
+
 #rules_btn {
 	float: right;
 	font-size: 1.5em;
@@ -202,6 +219,12 @@ h3 {
 /* Button */
 button {
     	font-size: 1em;
+	cursor: pointer;
+}
+
+.btn {
+	margin: 5px;
+	padding: 1px 6px;
 }
 
 /* Margin */
@@ -392,7 +415,9 @@ a {
 }
 
 .modal-content {
-	background-color: #fefefe;
+	background-image: url("../img/bord.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	margin: auto;
 	padding: 20px;
 	border: 1px solid #888;
@@ -402,10 +427,8 @@ a {
     	background-repeat: no-repeat;
 }
 
-#biskit_rules .modal-content {
-	background-image: url("../img/bord.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+#biskit_players .modal-content {
+	width: 30%;
 }
 
 .modal-content.move-up {
