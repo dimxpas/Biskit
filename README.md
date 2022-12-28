@@ -1,5 +1,5 @@
 # Biskit
-Dice Games for Party / Jeux de dés pour soirée
+Dice Game for party / Jeu de dés pour soirée
 
 Le Biskit est un jeu d'alcool, il se joue avec des dès et parfois aussi avec des cartes.
 Dans cette version nous jouerons uniquement avec des dès.
