@@ -1,7 +1,7 @@
 # Biskit
 Dice Games for Party / Jeux de dés pour soirée
 
-Le Biskit est un jeux d'alcool, il se joue avec des dès et parfois aussi avec des cartes.
+Le Biskit est un jeu d'alcool, il se joue avec des dès et parfois aussi avec des cartes.
 Dans cette version nous jouerons uniquement avec des dès.
 Les règles : 
   - Le premier lancé de dès indiquera le premier joueur qui commencera.
@@ -22,3 +22,13 @@ Les règles :
   - Si les dès lancés n'entraîne pas une gorgée alors c'est au tour du joueur suivant.
   
 Tu n'auras donc pour jouer seulement besoin d'amis et d'alcools, je m'occupe du reste mais soit attentif sinon tu vas vite finir pompette !
+
+Version actuelle : 
+    - Possibilité de jouer à plusieurs
+    - Possibilité d'avoir et de retirer la poisse
+    - Possibilité de changer de sens
+    - Possibilité d'effectuer un duel
+    
+Future version :
+    - Possibilité d'ajouter, de renommer et de supprimer un joueur en cours de partie
+    - Modification du style et ajout d'animation
