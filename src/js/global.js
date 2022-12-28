@@ -1,77 +1,187 @@
 jQuery(document).ready(function () {
-    $("#roll").on("click", function () {
-        result1 = randomDice();
-        result2 = randomDice();
-        $("#result_dice").html(result1 + " " + result2);
-        if (result1 == 6 && result2 == 6) {
-            setTimeout(function () { $("#message").html("Distribues " + result1 + " gorgées, inventes une nouvelle règle et on change de sens"); }, 1300);
-            setTimeout(function () { $("#luck").css("display", "block"); document.getElementById('luck').play(); }, 1300);
-            setTimeout(function () { $("#luck").css("display", "none"); }, 4300);
-        } else if (result1 == result2) {
-            if (result1 == 5) {
-                setTimeout(function () { $("#message").html("Bois une gorgée et distribues " + result1 + " gorgées"); }, 1300);
-            } else if (result1 == 3) {
-                setTimeout(function () { $("#message").html("Distribue " + result1 + " gorgées, LA POISSE !!"); }, 1300);
+    poisse = "";
+
+    $("#roll_versus").on("click", function() {
+        $("#roll_versus").addClass("hidden");
+        result1vs = 0;
+        result2vs = 0;
+        roll1vs = 0;
+        roll2vs = 0;
+        v = 0;
+
+        var throwDiceVersus = function(v) {
+            if (roll1vs == 0) {
+                result1vs = randomDice();
+                // lancement du dés 1
+                throwDices("dice_1", result1vs);
+            }
+            if (roll2vs == 0) {
+                result2vs = randomDice();
+                // lancement du dés 2
+                throwDices("dice_2", result2vs);
+            }
+            
+            if (result1vs == 1 || result1vs == 2) {
+                roll1vs = result1vs;
+            }
+            if (result2vs == 1 || result2vs == 2) {
+                roll2vs = result2vs;
+            }
+
+            if (roll1vs > 0 && roll2vs > 0 && roll1vs !== roll2vs) {
+                setTimeout(function () { $("#message").html("<span class='title'>" + selectedPlayer + "</span> ton duel a été remporté, c'est <span class='title'>" + oldPlayer + "</span> qui vas prendre ce cul sec !<br>La partie reprend avec <span class='title'>" + selectedPlayer + "</span>"); }, 1000);
+                $("#roll").removeClass("hidden");
+                v = 2;
+            } else if (roll1vs > 0 || roll2vs > 0) {
+                if (roll1vs > 0) {
+                    if (roll1vs == 1) {
+                        lastrollvs = 2;
+                    } else {
+                        lastrollvs = 1;
+                    }
+                }
+                if (roll2vs > 0) {
+                    if (roll2vs == 1) {
+                        lastrollvs = 2;
+                    } else {
+                        lastrollvs = 1;
+                    }
+                }
+                setTimeout(function () { $("#message").html("<span class='title'>" + selectedPlayer + "</span> plus qu'un " + lastrollvs); }, 1000);
             } else {
-                setTimeout(function () { $("#message").html("Distribue " + result1 + " gorgées"); }, 1300);
+                setTimeout(function () { $("#message").html("<span class='title'>" + selectedPlayer + "</span> tu le sens arriver ton cul sec ?"); }, 1000);
             }
-        } else if (result1 == 1 && result2 == 2 || result2 == 1 && result1 == 2) {
-            setTimeout(function () { $("#duel").css("display", "block"); document.getElementById('duel').play(); $("#message").html("Duel"); }, 1300);
-            setTimeout(function () { $("#duel").css("display", "none"); }, 4400);
-        } else if (result1 + result2 == 7) {
-            if (result1 == 3 || result2 == 3) {
-                setTimeout(function () { $("#message").html("BISKIT ! Tout le monde boit, LA POISSE !!"); }, 1300);
-            } else {
-                setTimeout(function () { $("#message").html("BISKIT ! Tout le monde boit"); }, 1300);
-            }
-            // setTimeout(function(){$("#duel").css("display", "block");document.getElementById('duel').play(); }, 1500);
-            // setTimeout(function(){$("#duel").css("display", "none"); }, 4600);
-        } else if (result1 + result2 == 9) {
-            if (result1 == 3 || result2 == 3) {
-                setTimeout(function () { $("#message").html("Le joueur précèdent boit, LA POISSE !!"); }, 1300);
-            } else {
-                setTimeout(function () { $("#message").html("Le joueur précèdent boit"); }, 1300);
-            }
-        } else if (result1 + result2 == 10) {
-            setTimeout(function () { $("#message").html("Bois une gorgée"); }, 1300);
-        } else if (result1 + result2 == 11) {
-            setTimeout(function () { $("#message").html("Le joueur suivant boit"); }, 1300);
-        } else {
-            if (result1 == 3 || result2 == 3) {
-                setTimeout(function () { $("#message").html("LA POISSE !!"); }, 1300);
-            } else {
-                $("#message").html("");
-            }
-        }
-        a = 1;
-        while (a < 7) {
-            if (result1 == a) {
-                b = a;
-                // utilisation de fontawesome
-                setTimeout(function () { $("#dice_1").html(number_to_letter(randomDice())); }, 200);
-                setTimeout(function () { $("#dice_1").html(number_to_letter(randomDice())) }, 400);
-                setTimeout(function () { $("#dice_1").html(number_to_letter(randomDice())); }, 600);
-                setTimeout(function () { $("#dice_1").html(number_to_letter(b)); }, 800);
-            }
-            if (result2 == a) {
-                c = a;
-                // utilisation de fontawesome
-                setTimeout(function () { $("#dice_2").html(number_to_letter(randomDice())); }, 200);
-                setTimeout(function () { $("#dice_2").html(number_to_letter(randomDice())) }, 400);
-                setTimeout(function () { $("#dice_2").html(number_to_letter(randomDice())); }, 600);
-                setTimeout(function () { $("#dice_2").html(number_to_letter(c)); }, 800);
-            }
-            a++;
         }
 
+        var repeatThrowVersus = function() {
+            throwDiceVersus(v);
+            v++;
+            setTimeout(function() {
+              if (v < 3) {
+                if (roll1vs > 0 && roll2vs > 0 && roll1vs !== roll2vs) {
+                    // do nothing
+                } else {
+                    if (roll1vs > 0 && roll2vs > 0 && roll1vs == roll2vs) {
+                        roll2vs = 0;
+                    }
+                    repeatThrowVersus();
+                }
+              } else {
+                if (roll1vs == 0 || roll2vs == 0 || roll2vs == roll1vs) {
+                    setTimeout(function () { $("#message").html("<span class='title'>" + selectedPlayer + "</span> ton duel est perdu, tu vas pouvoir remercier <span class='title'>" + oldPlayer + "</span> pour ce cul sec !<br>La partie reprend avec <span class='title'>" + selectedPlayer + "</span>"); $("#roll").removeClass("hidden"); }, 1000);
+                }
+              }
+            }, 1000);
+        }
+        
+        repeatThrowVersus();        
     });
-    
+
+    $("#roll").on("click", function() {
+        $("#message").html("");
+        // lancement du dés 1
+        result1 = randomDice(); 
+        throwDices("dice_1", result1);
+        // lancement du dés 2
+        result2 = randomDice();
+        throwDices("dice_2", result2);
+
+        if ($("#player").html() == "") {
+            actualPlayer = Math.floor(Math.random() * array_player.length);
+            selectedPlayer = array_player[actualPlayer];
+            setTimeout(function () { $("#message").html("C'est <span class='title'>" + selectedPlayer + "</span> qui commence la partie !"); $("#player").html(selectedPlayer); }, 1000);
+        } else {
+            $("#result_dice").html(result1 + " " + result2);
+            if (result1 == 6 && result2 == 6) {
+                setTimeout(function () { $("#message").html("Distribues " + result1 + " gorgées,<br>inventes une nouvelle règle et on change de sens"); }, 1000);
+                array_player.reverse();
+                actualPlayer = array_player.indexOf(selectedPlayer);
+                setTimeout(function () { $("#luck").css("display", "block"); document.getElementById('luck').play(); }, 1000);
+                setTimeout(function () { $("#luck").css("display", "none"); }, 4000);
+            } else if (result1 == result2) {
+                if (result1 == 5) {
+                    setTimeout(function () { $("#message").html("Bois une gorgée et distribues " + result1 + " gorgées"); }, 1000);
+                } else if (result1 == 3) {
+                    if (poisse == "") {
+                        setTimeout(function () { $("#message").html("Distribue " + result1 + " gorgées"); }, 1000);
+                    } else if (poisse == selectedPlayer) {
+                        setTimeout(function () { $("#message").html("Distribue " + result1 + " gorgées, mais tu gardes la poisse !!"); }, 1000);
+                    } else {
+                        setTimeout(function () { $("#message").html("Distribue " + result1 + " gorgées,<br><span class='title'>" + poisse + "</span> alias la poisse tu bois 2 gorgées !!"); }, 1000);
+                    }
+                } else {
+                    setTimeout(function () { $("#message").html("Distribue " + result1 + " gorgées"); }, 1000);
+                }
+            } else if (result1 == 1 && result2 == 2 || result2 == 1 && result1 == 2) {
+                setTimeout(function () { $("#duel").css("display", "block"); document.getElementById('duel').play(); $("#message").html("Duel"); }, 1000);
+                setTimeout(function () { $("#duel").css("display", "none"); duelTime(selectedPlayer, array_player); }, 4100);
+            } else if (result1 + result2 == 7) {
+                if (result1 == 3 || result2 == 3) {
+                    if (poisse == "") {
+                        poisse = selectedPlayer;
+                        setTimeout(function () { $("#message").html("BISKIT ! Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + selectedPlayer + "</span> tu deviens la poisse !!"); }, 1000);
+                    } else if (poisse == selectedPlayer) {
+                        poisse = "";
+                        setTimeout(function () { $("#message").html("BISKIT ! Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + selectedPlayer + "</span> tu n'es plus la poisse !!"); }, 1000);
+                    } else {
+                        setTimeout(function () { $("#message").html("BISKIT ! Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + poisse + "</span> alias la poisse tu bois 1 gorgée !!"); }, 1000);
+                    }
+                } else {
+                    setTimeout(function () { $("#message").html("BISKIT ! Le dernier joueur qui dit Biskit boit"); }, 1000);
+                }
+            } else if (result1 + result2 == 9) {
+                if (result1 == 3 || result2 == 3) {
+                    if (poisse == "") {
+                        poisse = selectedPlayer;
+                        setTimeout(function () { $("#message").html("<span class='title'>" + previousPlayerName(array_player, nb_player, actualPlayer) + "</span> tu précèdes donc tu bois,<br> <span class='title'>" + selectedPlayer + "</span> tu deviens la poisse !!"); }, 1000);
+                    } else if (poisse == selectedPlayer) {
+                        poisse = "";
+                        setTimeout(function () { $("#message").html("<span class='title'>" + previousPlayerName(array_player, nb_player, actualPlayer) + "</span> tu précèdes donc tu bois,<br> <span class='title'>" + selectedPlayer + "</span> tu n'es plus la poisse !!"); }, 1000);
+                    } else {
+                        setTimeout(function () { $("#message").html("<span class='title'>" + previousPlayerName(array_player, nb_player, actualPlayer) + "</span> tu précèdes donc tu bois,<br> <span class='title'>" + poisse + "</span> alias la poisse tu bois 1 gorgée !!"); }, 1000);
+                    }
+                } else {
+                    setTimeout(function () { $("#message").html("<span class='title'>" + previousPlayerName(array_player, nb_player, actualPlayer) + "</span> tu précèdes donc tu bois"); }, 1000);
+                }
+            } else if (result1 + result2 == 10) {
+                setTimeout(function () { $("#message").html("Bois une gorgée"); }, 1000);
+            } else if (result1 + result2 == 11) {
+                setTimeout(function () { $("#message").html("<span class='title'>" + nextPlayerName(array_player, nb_player, actualPlayer) + "</span> tu suis donc tu bois"); }, 1000);
+            } else {
+                if (result1 == 3 || result2 == 3) {
+                    setTimeout(function () { $("#message").html("LA POISSE TU BOIS !!"); }, 1000);
+                    if (poisse == "") {
+                        poisse = selectedPlayer;
+                        setTimeout(function () { 
+                            $("#message").html("<span class='title'>" + selectedPlayer + "</span> tu deviens la poisse !!");
+                            nextPlayer(array_player, nb_player, actualPlayer);
+                            $("#message").append("<br>C'est au tour de <span class='title'>" + selectedPlayer + "</span>");
+                            $("#player").html(selectedPlayer);
+                        }, 1000);
+                    } else if (poisse == selectedPlayer) {
+                        poisse = "";
+                        setTimeout(function () { 
+                            $("#message").html("<span class='title'>" + selectedPlayer + "</span> tu n'es plus la poisse !!");
+                            nextPlayer(array_player, nb_player, actualPlayer);
+                            $("#message").append("<br>C'est au tour de <span class='title'>" + selectedPlayer + "</span>");
+                            $("#player").html(selectedPlayer);
+                        }, 1000);
+                    } else {
+                        setTimeout(function () { $("#message").html("<span class='title'>" + poisse + "</span> alias la poisse tu bois 1 gorgée !!"); }, 1000);
+                    }
+                } else {
+                    nextPlayer(array_player, nb_player, actualPlayer);
+                    setTimeout(function () { $("#message").html("C'est au tour de <span class='title'>" + selectedPlayer + "</span>"); $("#player").html(selectedPlayer); }, 1000);
+                }
+            }
+        }
+    });
+
     // Pour fermer la modal
     $(".modal-content span.close").on("click", function() {
         closeModal();
     });
 });
-
 // Ajout de joueurs
 function addPlayer() {
     $(".add_player").before("<p class='biskit-player'><i class='fa-solid fa-user-pen mr-2'></i> <input type='text'> <i onclick=\"$(this).closest('p').remove();\" class='ml-2 fa-regular fa-trash-can'></i></p>");
@@ -145,12 +255,77 @@ function show_players() {
     $("#biskit_players .modal-content").removeClass("move-down").addClass("move-up");
     $("body").css("overflow", "hidden");
 }
+// Affichage du duel
+function duelTime(selectedP, arrayP) {
+    a = 0;
+    players_duel = "";
+    while (a < nb_player) {
+        console.log(arrayP[a], selectedP);
+        if (arrayP[a] !== selectedP) {
+            players_duel += "<button id='player_"+a+"' class='btn' onclick='versus(this.id)'>" + arrayP[a] + "</button>";
+        }
+        a++;
+    }
+    $("#message").html("Choisis ta cible<br>" + players_duel);
+    $("#roll").addClass("hidden");
+}
+// Lancement du duel et changement de joueur
+function versus(player_id) {
+    oldPlayer = selectedPlayer;
+    actualPlayer = parseInt(player_id.split("_")[1]);
+    selectedPlayer = array_player[actualPlayer];
+    $("#player").html(selectedPlayer);
+    $("#message").html("<span class='title'>" + selectedPlayer + "</span> tu as 3 essais pour obtenir un 1 et un 2<br>Si tu échoues tu bois 1 cul sec sinon c'est <span class='title'>" + oldPlayer + "</span> qui le boit !");
+    $("#roll_versus").removeClass("hidden");
+}
 // numéro random de 1 à 6
 function randomDice() {
     return Math.round(Math.random() * 5) + 1;
+}
+// Affichage du lancer de dès
+function throwDices(id_dice, dice_number) {
+    setTimeout(function () { $("#" + id_dice).html(number_to_letter(randomDice())); }, 200);
+    setTimeout(function () { $("#" + id_dice).html(number_to_letter(randomDice())); }, 400);
+    setTimeout(function () { $("#" + id_dice).html(number_to_letter(randomDice())); }, 600);
+    setTimeout(function () { $("#" + id_dice).html(number_to_letter(dice_number)); }, 800);
 }
 // affichage du dès avec fontawesome && traduction du nombre en lettre
 function number_to_letter(dice_number) {
     var numbers = ["one", "two", "three", "four", "five", "six"];
     return "<i class='fa-solid fa-dice-" + numbers[dice_number - 1] + "'></i>";
+}
+// on passe au joueur suivant
+function nextPlayer(arrayP, nb_player, actualP) {
+    actualPlayer = actualP + 1;
+    if (actualPlayer == nb_player) {
+        actualPlayer = 0;
+    }
+    selectedPlayer = arrayP[actualPlayer];
+    console.log(actualPlayer, selectedPlayer);
+}
+// on affiche le nom du joueur suivant
+function nextPlayerName(arrayP, nb_player, actualP) {
+    var next_player = 0;
+    if (actualP + 1 == nb_player) {
+        next_player = 0;
+    } else {
+        next_player = actualP + 1;
+    }
+    return arrayP[next_player];
+}
+// on passe au joueur précédent
+function previousPlayer(arrayP, nb_player, actualP) {
+    actualPlayer = actualP - 1;
+    if (actualPlayer < 0) {
+        actualPlayer = nb_player - 1;
+    }
+    selectedPlayer = arrayP[actualPlayer];
+}
+// on affiche le nom du joueur précédent
+function previousPlayerName(arrayP, nb_player, actualP) {
+    var previous_player = actualP - 1;
+    if (previous_player < 0) {
+        previous_player = nb_player - 1;
+    }
+    return arrayP[previous_player];
 }
