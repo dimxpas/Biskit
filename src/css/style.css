@@ -146,7 +146,7 @@ body {
 }
 
 #message {
-	height: 1.5em;
+	min-height: 1.5em;
 	font-size: 1.5em;
 }
 
@@ -197,7 +197,7 @@ h3 {
 #players_btn {
 	float: left;
 	font-size: 1.5em;
-    cursor: pointer;
+    	cursor: pointer;
 }
 
 .add_player {
@@ -364,6 +364,7 @@ a {
 }
 
 .dices-block {
+	margin-top: 35px;
 	font-size: 110px;
 }
 
