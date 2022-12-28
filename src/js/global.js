@@ -260,7 +260,6 @@ function duelTime(selectedP, arrayP) {
     a = 0;
     players_duel = "";
     while (a < nb_player) {
-        console.log(arrayP[a], selectedP);
         if (arrayP[a] !== selectedP) {
             players_duel += "<button id='player_"+a+"' class='btn' onclick='versus(this.id)'>" + arrayP[a] + "</button>";
         }
@@ -301,7 +300,6 @@ function nextPlayer(arrayP, nb_player, actualP) {
         actualPlayer = 0;
     }
     selectedPlayer = arrayP[actualPlayer];
-    console.log(actualPlayer, selectedPlayer);
 }
 // on affiche le nom du joueur suivant
 function nextPlayerName(arrayP, nb_player, actualP) {
