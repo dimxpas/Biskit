@@ -416,9 +416,7 @@ a {
 }
 
 .modal-content {
-	background-image: url("../img/bord.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background-color: #2a2a2a;
 	margin: auto;
 	padding: 20px;
 	border: 1px solid #888;
