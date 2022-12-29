@@ -96,8 +96,8 @@ jQuery(document).ready(function () {
                 setTimeout(function () { $("#message").html("Distribues " + result1 + " gorgées,<br>inventes une nouvelle règle et on change de sens"); }, 1000);
                 array_player.reverse();
                 actualPlayer = array_player.indexOf(selectedPlayer);
-                setTimeout(function () { $("#luck").css("display", "block"); document.getElementById('luck').play(); }, 1000);
-                setTimeout(function () { $("#luck").css("display", "none"); }, 4000);
+                lucky_vid = document.getElementById('luck');
+                setTimeout(function () { $("#luck").css("display", "block"); lucky_vid.play(); lucky_vid.onended = function () { $("#luck").css("display", "none"); }; }, 1000);
             } else if (result1 == result2) {
                 if (result1 == 5) {
                     setTimeout(function () { $("#message").html("Bois une gorgée et distribues " + result1 + " gorgées"); }, 1000);
@@ -113,8 +113,8 @@ jQuery(document).ready(function () {
                     setTimeout(function () { $("#message").html("Distribue " + result1 + " gorgées"); }, 1000);
                 }
             } else if (result1 == 1 && result2 == 2 || result2 == 1 && result1 == 2) {
-                setTimeout(function () { $("#duel").css("display", "block"); document.getElementById('duel').play(); $("#message").html("Duel"); }, 1000);
-                setTimeout(function () { $("#duel").css("display", "none"); duelTime(selectedPlayer, array_player); }, 4100);
+                versus_vid = document.getElementById('duel');
+                setTimeout(function () { $("#duel").css("display", "block"); versus_vid.play(); $("#message").html("Duel"); versus_vid.onended = function () { $("#duel").css("display", "none"); duelTime(selectedPlayer, array_player); }; }, 1000);
             } else if (result1 + result2 == 7) {
                 if (result1 == 3 || result2 == 3) {
                     if (poisse == "") {
