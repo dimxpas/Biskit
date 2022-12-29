@@ -392,6 +392,12 @@ a {
 	color: #9a1515;
 }
 
+[class^='fa-solid fa-dice-'] {
+	box-shadow: 2px 5px 5px 2px grey;
+	border-radius: 12px;
+	line-height: 0.8 !important;
+}
+
 .dices-block {
 	margin-top: 35px;
 	font-size: 110px;
