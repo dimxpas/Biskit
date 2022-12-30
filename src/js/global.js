@@ -300,7 +300,7 @@ function deletePlayer(arrayP, indexP) {
             }
             nextPlayer(arrayP, arrayP.length, actualPlayer);
             $("#player").html(arrayP[actualPlayer]);
-            $("#message").html("La partie reprend avec " + arrayP[actualPlayer] + message_poisse);
+            $("#message").html("La partie reprend avec <span class='title'>" + arrayP[actualPlayer] + "</span>" + message_poisse);
         } else {
             $("#message").append(message_poisse);
         }
