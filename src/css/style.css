@@ -210,8 +210,13 @@ h3 {
 	cursor: pointer;
 }
 
-.fa-trash-can {
-	color: rgb(131, 22, 22);
+.delete-icon {
+	color: #831616;
+	cursor: pointer;
+}
+
+.valid-icon {
+	color: #008000;
 	cursor: pointer;
 }
 
