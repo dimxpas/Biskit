@@ -199,31 +199,30 @@ h3 {
 	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #42c52e, 0 0 35px #42c52e, 0 0 40px #42c52e, 0 0 50px #42c52e, 0 0 75px #42c52e;
 }
 
+#players_btn, #rules_btn, .add-player, .update-player, .delete-icon, .valid-icon {
+	cursor: pointer;
+}
+
 #players_btn {
 	float: left;
 	font-size: 1.5em;
-    	cursor: pointer;
 }
 
 .add-player {
 	font-size: 1.5em;
-	cursor: pointer;
 }
 
 .delete-icon {
 	color: #831616;
-	cursor: pointer;
 }
 
 .valid-icon {
 	color: #008000;
-	cursor: pointer;
 }
 
 #rules_btn {
 	float: right;
 	font-size: 1.5em;
-	cursor: pointer;
 }
 
 /* Button */
