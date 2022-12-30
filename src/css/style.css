@@ -199,6 +199,16 @@ h3 {
 	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #42c52e, 0 0 35px #42c52e, 0 0 40px #42c52e, 0 0 50px #42c52e, 0 0 75px #42c52e;
 }
 
+.fa-user-plus, #rules_btn, #players_btn, .fa-trash-can, .fa-circle-check, .update-player .fa-user-pen {
+	transition: transform 0.15s ease-out;
+}
+
+.fa-user-plus:hover, #rules_btn:hover, #players_btn:hover, .fa-trash-can:hover, .fa-circle-check:hover, .update-player .fa-user-pen:hover {
+	-ms-transform: scale(1.3);
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
 #players_btn, #rules_btn, .add-player, .update-player, .delete-icon, .valid-icon {
 	cursor: pointer;
 }
