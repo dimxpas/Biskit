@@ -295,10 +295,12 @@ function number_to_letter(dice_number) {
     var numbers = ["one", "two", "three", "four", "five", "six"];
     return "<i class='fa-solid fa-dice-" + numbers[dice_number - 1] + "'></i>";
 }
-// modification d'un joueur
+// modification d'un joueur en jeu
 function updatePlayer(arrayP, indexP, new_name) {
     new_name = input_value;
-    console.log(new_name);
+    if (poisse == arrayP[indexP]) {
+        poisse = new_name;
+    }
     arrayP[indexP] = new_name;
     array_player = arrayP;
     if (indexP == actualPlayer) {
