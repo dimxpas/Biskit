@@ -183,9 +183,9 @@ jQuery(document).ready(function () {
         closeModal();
     });
 });
-// Ajout de joueurs
+// Ajout de joueurs hors jeu
 function addPlayer() {
-    $(".add_player").before("<p class='biskit-player'><i class='fa-solid fa-user-pen mr-2'></i> <input type='text'> <i onclick=\"$(this).closest('p').remove();\" class='ml-2 fa-regular fa-trash-can'></i></p>");
+    $(".add_player").before("<p class='biskit-player'><i class='fa-solid fa-user-pen mr-2'></i> <input type='text'> <span class='ml-2 delete-icon' onclick=\"$(this).closest('p').remove();\"><i class='fa-regular fa-trash-can'></i></span></p>");
 }
 // sélection des joueurs
 function checkPlayer() {
@@ -213,7 +213,7 @@ function checkPlayer() {
         }
     }
 }
-// suppression d'un joueur
+// suppression d'un joueur hors jeu
 function removePlayer() {
     $(this).closest('p').remove();
 }
@@ -248,6 +248,7 @@ function show_players() {
         } else {
             poisse_icon = "";
         }
+        players_list += "<p id='player_" + a + "'><span class='add_player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false);'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value); $(\"#inputplayer_" + a + "\").prop(\"disabled\", true);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + "</p>";
         players_list += "<p><i class='fa-solid fa-user-pen mr-2'></i> <input disabled type='text' value='" + array_player[a] + "'>" + poisse_icon + "</p>";
         a++;
     }
@@ -293,6 +294,17 @@ function throwDices(id_dice, dice_number) {
 function number_to_letter(dice_number) {
     var numbers = ["one", "two", "three", "four", "five", "six"];
     return "<i class='fa-solid fa-dice-" + numbers[dice_number - 1] + "'></i>";
+}
+// modification d'un joueur
+function updatePlayer(arrayP, indexP, new_name) {
+    new_name = input_value;
+    console.log(new_name);
+    arrayP[indexP] = new_name;
+    array_player = arrayP;
+    if (indexP == actualPlayer) {
+        selectedPlayer = new_name;
+        $("#player").html(new_name);
+    }
 }
 // on passe au joueur suivant
 function nextPlayer(arrayP, nb_player, actualP) {
