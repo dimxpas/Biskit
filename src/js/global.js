@@ -68,10 +68,11 @@ jQuery(document).ready(function () {
                 }
               } else {
                 if (roll1vs == 0 || roll2vs == 0 || roll2vs == roll1vs) {
-                    setTimeout(function () { $("#message").html("<span class='title'>" + selectedPlayer + "</span> ton duel est perdu, tu vas pouvoir remercier <span class='title'>" + oldPlayer + "</span> pour ce cul sec !<br>La partie reprend avec <span class='title'>" + selectedPlayer + "</span>"); $("#roll").removeClass("hidden"); }, 1000);
+                    $("#message").html("<span class='title'>" + selectedPlayer + "</span> ton duel est perdu, tu vas pouvoir remercier <span class='title'>" + oldPlayer + "</span> pour ce cul sec !<br>La partie reprend avec <span class='title'>" + selectedPlayer + "</span>"); 
+                    $("#roll").removeClass("hidden");
                 }
               }
-            }, 1000);
+            }, 1500);
         }
         
         repeatThrowVersus();        
