@@ -248,13 +248,65 @@ function show_players() {
         } else {
             poisse_icon = "";
         }
-        players_list += "<p id='player_" + a + "'><span class='add-player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false);'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value); $(\"#inputplayer_" + a + "\").prop(\"disabled\", true);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + " <span class='delete-icon' onclick='deletePlayer(array_player, " + a + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
+        players_list += "<p id='player_" + a + "'><span class='update-player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false); $(\"#player_" + a + " .valid-icon\").removeClass(\"hidden\");'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2 hidden' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value); $(\"#inputplayer_" + a + "\").prop(\"disabled\", true);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + " <span class='delete-icon' onclick='deletePlayer(array_player, " + a + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
         a++;
     }
     $("#player_list").html(players_list);
     $("#biskit_players").removeClass("hidden fade-out").addClass("fade-in");
     $("#biskit_players .modal-content").removeClass("move-down").addClass("move-up");
     $("body").css("overflow", "hidden");
+}
+// Ajout de joueurs hors jeu
+function addPlayerInGame() {
+    $("#add_player_in_game").addClass("hidden");
+    new_line_player = "<p id='player_" + nb_player + "'><span class='update-player' onclick='$(\"#inputplayer_" + nb_player + "\").prop(\"disabled\", false);'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + nb_player + "' type='text'> <span class='valid-icon ml-2' onclick='input_value = $(\"#inputplayer_" + nb_player + "\")[0].value; updatePlayer(array_player, " + nb_player + ", input_value); $(\"#inputplayer_" + nb_player + "\").prop(\"disabled\", true);'><i class='fa-regular fa-circle-check'></i></span> <span class='delete-icon' onclick='deletePlayer(array_player, " + nb_player + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
+    $("#player_list").append(new_line_player);
+}
+// modification d'un joueur en jeu
+function updatePlayer(arrayP, indexP, new_name) {
+    if (indexP == nb_player) {
+        arrayP.push(new_name);
+        array_player = arrayP;
+        nb_player = arrayP.length;
+        $("#add_player_in_game").removeClass("hidden");
+    } else {
+        if (poisse == arrayP[indexP]) {
+            poisse = new_name;
+        }
+        arrayP[indexP] = new_name;
+        array_player = arrayP;
+        if (indexP == actualPlayer) {
+            selectedPlayer = new_name;
+            $("#player").html(new_name);
+        }
+    }
+    $("#player_" + indexP + " .valid-icon").addClass("hidden");
+}
+// suppression d'un joueur en jeu
+function deletePlayer(arrayP, indexP) {
+    if (arrayP.length > 2) {
+        $("#player_" + indexP).remove();
+        message_poisse = "";
+        if (arrayP[indexP] == poisse) {
+            poisse = "";
+            message_poisse = "<br>La poisse est de nouveau en jeu !";
+        }
+        arrayP.splice(indexP, 1);
+        array_player = arrayP;
+        nb_player = arrayP.length;
+        if (indexP == actualPlayer) {
+            if (indexP > arrayP.length - 1) {
+                actualPlayer = indexP - 1;
+            }
+            nextPlayer(arrayP, arrayP.length, actualPlayer);
+            $("#player").html(arrayP[actualPlayer]);
+            $("#message").html("La partie reprend avec " + arrayP[actualPlayer] + message_poisse);
+        } else {
+            $("#message").append(message_poisse);
+        }
+    } else {
+        alert("Vous ne pouvez plus supprimer de joueur (Minimum 2 joueurs)");
+    }
 }
 // Affichage du duel
 function duelTime(selectedP, arrayP) {
@@ -293,45 +345,6 @@ function throwDices(id_dice, dice_number) {
 function number_to_letter(dice_number) {
     var numbers = ["one", "two", "three", "four", "five", "six"];
     return "<i class='fa-solid fa-dice-" + numbers[dice_number - 1] + "'></i>";
-}
-// modification d'un joueur en jeu
-function updatePlayer(arrayP, indexP, new_name) {
-    new_name = input_value;
-    if (poisse == arrayP[indexP]) {
-        poisse = new_name;
-    }
-    arrayP[indexP] = new_name;
-    array_player = arrayP;
-    if (indexP == actualPlayer) {
-        selectedPlayer = new_name;
-        $("#player").html(new_name);
-    }
-}
-// suppression d'un joueur en jeu
-function deletePlayer(arrayP, indexP) {
-    if (arrayP.length > 2) {
-        $("#player_" + indexP).remove();
-        message_poisse = "";
-        if (arrayP[indexP] == poisse) {
-            poisse = "";
-            message_poisse = "<br>La poisse est de nouveau en jeu !";
-        }
-        arrayP.splice(indexP, 1);
-        array_player = arrayP;
-        nb_player = arrayP.length;
-        if (indexP == actualPlayer) {
-            if (indexP > arrayP.length - 1) {
-                actualPlayer = indexP - 1;
-            }
-            nextPlayer(arrayP, arrayP.length, actualPlayer);
-            $("#player").html(arrayP[actualPlayer]);
-            $("#message").html("La partie reprend avec " + arrayP[actualPlayer] + message_poisse);
-        } else {
-            $("#message").append(message_poisse);
-        }
-    } else {
-        alert("Vous ne pouvez plus supprimer de joueur (Minimum 2 joueurs)");
-    }
 }
 // on passe au joueur suivant
 function nextPlayer(arrayP, nb_player, actualP) {
