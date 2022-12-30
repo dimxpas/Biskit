@@ -185,7 +185,7 @@ jQuery(document).ready(function () {
 });
 // Ajout de joueurs hors jeu
 function addPlayer() {
-    $(".add_player").before("<p class='biskit-player'><i class='fa-solid fa-user-pen mr-2'></i> <input type='text'> <span class='ml-2 delete-icon' onclick=\"$(this).closest('p').remove();\"><i class='fa-regular fa-trash-can'></i></span></p>");
+    $("#add_player").before("<p class='biskit-player'><i class='fa-solid fa-user-pen mr-2'></i> <input type='text'> <span class='ml-2 delete-icon' onclick=\"$(this).closest('p').remove();\"><i class='fa-regular fa-trash-can'></i></span></p>");
 }
 // sélection des joueurs
 function checkPlayer() {
@@ -248,7 +248,7 @@ function show_players() {
         } else {
             poisse_icon = "";
         }
-        players_list += "<p id='player_" + a + "'><span class='add_player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false);'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value); $(\"#inputplayer_" + a + "\").prop(\"disabled\", true);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + "</p>";
+        players_list += "<p id='player_" + a + "'><span class='add-player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false);'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value); $(\"#inputplayer_" + a + "\").prop(\"disabled\", true);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + "</p>";
         players_list += "<p><i class='fa-solid fa-user-pen mr-2'></i> <input disabled type='text' value='" + array_player[a] + "'>" + poisse_icon + "</p>";
         a++;
     }
