@@ -248,8 +248,7 @@ function show_players() {
         } else {
             poisse_icon = "";
         }
-        players_list += "<p id='player_" + a + "'><span class='add-player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false);'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value); $(\"#inputplayer_" + a + "\").prop(\"disabled\", true);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + "</p>";
-        players_list += "<p><i class='fa-solid fa-user-pen mr-2'></i> <input disabled type='text' value='" + array_player[a] + "'>" + poisse_icon + "</p>";
+        players_list += "<p id='player_" + a + "'><span class='add-player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false);'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value); $(\"#inputplayer_" + a + "\").prop(\"disabled\", true);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + " <span class='delete-icon' onclick='deletePlayer(array_player, " + a + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
         a++;
     }
     $("#player_list").html(players_list);
@@ -306,6 +305,32 @@ function updatePlayer(arrayP, indexP, new_name) {
     if (indexP == actualPlayer) {
         selectedPlayer = new_name;
         $("#player").html(new_name);
+    }
+}
+// suppression d'un joueur en jeu
+function deletePlayer(arrayP, indexP) {
+    if (arrayP.length > 2) {
+        $("#player_" + indexP).remove();
+        message_poisse = "";
+        if (arrayP[indexP] == poisse) {
+            poisse = "";
+            message_poisse = "<br>La poisse est de nouveau en jeu !";
+        }
+        arrayP.splice(indexP, 1);
+        array_player = arrayP;
+        nb_player = arrayP.length;
+        if (indexP == actualPlayer) {
+            if (indexP > arrayP.length - 1) {
+                actualPlayer = indexP - 1;
+            }
+            nextPlayer(arrayP, arrayP.length, actualPlayer);
+            $("#player").html(arrayP[actualPlayer]);
+            $("#message").html("La partie reprend avec " + arrayP[actualPlayer] + message_poisse);
+        } else {
+            $("#message").append(message_poisse);
+        }
+    } else {
+        alert("Vous ne pouvez plus supprimer de joueur (Minimum 2 joueurs)");
     }
 }
 // on passe au joueur suivant
