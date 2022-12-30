@@ -9,7 +9,7 @@ jQuery(document).ready(function () {
         roll2vs = 0;
         v = 0;
 
-        var throwDiceVersus = function(v) {
+        function throwDiceVersus(v) {
             if (roll1vs == 0) {
                 result1vs = randomDice();
                 // lancement du dés 1
@@ -53,7 +53,7 @@ jQuery(document).ready(function () {
             }
         }
 
-        var repeatThrowVersus = function() {
+        function repeatThrowVersus() {
             throwDiceVersus(v);
             v++;
             setTimeout(function() {
