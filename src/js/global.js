@@ -1,4 +1,8 @@
 jQuery(document).ready(function () {
+    diceSound = new Audio('./src/audio/dice_roll.wav');
+    diceSound.muted = true;
+    lucky_vid = document.getElementById('luck');
+    versus_vid = document.getElementById('duel');
     poisse = "";
 
     $("#roll_versus").on("click", function() {
@@ -97,7 +101,6 @@ jQuery(document).ready(function () {
                 setTimeout(function () { $("#message").html("Distribues " + result1 + " gorgées,<br>inventes une nouvelle règle et on change de sens"); }, 1000);
                 array_player.reverse();
                 actualPlayer = array_player.indexOf(selectedPlayer);
-                lucky_vid = document.getElementById('luck');
                 setTimeout(function () { $("#luck").css("display", "block"); lucky_vid.play(); lucky_vid.onended = function () { $("#luck").css("display", "none"); }; }, 1000);
             } else if (result1 == result2) {
                 if (result1 == 5) {
@@ -114,7 +117,6 @@ jQuery(document).ready(function () {
                     setTimeout(function () { $("#message").html("Distribue " + result1 + " gorgées"); }, 1000);
                 }
             } else if (result1 == 1 && result2 == 2 || result2 == 1 && result1 == 2) {
-                versus_vid = document.getElementById('duel');
                 setTimeout(function () { $("#duel").css("display", "block"); versus_vid.play(); $("#message").html("Duel"); versus_vid.onended = function () { $("#duel").css("display", "none"); duelTime(selectedPlayer, array_player); }; }, 1000);
             } else if (result1 + result2 == 7) {
                 if (result1 == 3 || result2 == 3) {
@@ -237,6 +239,19 @@ function show_rules() {
     $("#biskit_rules").removeClass("hidden fade-out").addClass("fade-in");
     $("#biskit_rules .modal-content").removeClass("move-down").addClass("move-up");
     $("body").css("overflow", "hidden");
+}
+// gestion du volume
+function toggleVolume() {
+    $("#volume_up, #volume_mute").toggleClass("hidden");
+    if (diceSound.muted == false) {
+        diceSound.muted = true;
+        lucky_vid.muted = true;
+        versus_vid.muted = true;
+    } else {
+        diceSound.muted = false;
+        lucky_vid.muted = false;
+        versus_vid.muted = false;
+    }
 }
 // affichage des joueurs
 function show_players() {
