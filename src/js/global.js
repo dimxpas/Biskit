@@ -120,15 +120,15 @@ jQuery(document).ready(function () {
                 if (result1 == 3 || result2 == 3) {
                     if (poisse == "") {
                         poisse = selectedPlayer;
-                        setTimeout(function () { $("#message").html("BISKIT ! Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + selectedPlayer + "</span> tu deviens la poisse !!"); }, 1000);
+                        setTimeout(function () { $("#message").html("<span class='popular-title'>BISKIT !</span> Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + selectedPlayer + "</span> tu deviens la poisse !!"); }, 1000);
                     } else if (poisse == selectedPlayer) {
                         poisse = "";
-                        setTimeout(function () { $("#message").html("BISKIT ! Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + selectedPlayer + "</span> tu n'es plus la poisse !!"); }, 1000);
+                        setTimeout(function () { $("#message").html("<span class='popular-title'>BISKIT !</span> Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + selectedPlayer + "</span> tu n'es plus la poisse !!"); }, 1000);
                     } else {
-                        setTimeout(function () { $("#message").html("BISKIT ! Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + poisse + "</span> alias la poisse tu bois 1 gorgée !!"); }, 1000);
+                        setTimeout(function () { $("#message").html("<span class='popular-title'>BISKIT !</span> Le dernier joueur qui dit Biskit boit,<br> <span class='title'>" + poisse + "</span> alias la poisse tu bois 1 gorgée !!"); }, 1000);
                     }
                 } else {
-                    setTimeout(function () { $("#message").html("BISKIT ! Le dernier joueur qui dit Biskit boit"); }, 1000);
+                    setTimeout(function () { $("#message").html("<span class='popular-title'>BISKIT !</span> Le dernier joueur qui dit Biskit boit"); }, 1000);
                 }
             } else if (result1 + result2 == 9) {
                 if (result1 == 3 || result2 == 3) {
