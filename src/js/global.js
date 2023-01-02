@@ -79,7 +79,7 @@ jQuery(document).ready(function () {
                     $("#roll").removeClass("hidden");
                 }
               }
-            }, 1500);
+            }, 2000);
         }
         
         repeatThrowVersus();        
