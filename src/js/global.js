@@ -14,15 +14,18 @@ jQuery(document).ready(function () {
         v = 0;
 
         function throwDiceVersus(v) {
-            if (roll1vs == 0) {
-                result1vs = randomDice();
-                // lancement du dés 1
-                throwDices("dice_1", result1vs);
-            }
-            if (roll2vs == 0) {
-                result2vs = randomDice();
-                // lancement du dés 2
-                throwDices("dice_2", result2vs);
+            if (roll1vs == 0 || roll2vs == 0) {
+                diceSound.play();
+                if (roll1vs == 0) {
+                    result1vs = randomDice();
+                    // lancement du dés 1
+                    throwDices("dice_1", result1vs);
+                }
+                if (roll2vs == 0) {
+                    result2vs = randomDice();
+                    // lancement du dés 2
+                    throwDices("dice_2", result2vs);
+                }
             }
             
             if (result1vs == 1 || result1vs == 2) {
@@ -84,6 +87,7 @@ jQuery(document).ready(function () {
 
     $("#roll").on("click", function() {
         $("#message").html("");
+        diceSound.play();
         // lancement du dés 1
         result1 = randomDice(); 
         throwDices("dice_1", result1);
