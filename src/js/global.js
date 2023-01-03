@@ -217,7 +217,7 @@ function checkPlayer() {
             alert("Veuillez choisir un nom pour tout les joueurs.");
         } else {
             $("#nb_person").addClass("hidden");
-            $("#dices_block, #players_btn").removeClass("hidden");
+            $("#dices_block, #players_btn, #your_rules_btn").removeClass("hidden");
             $("#roll").trigger("click");
         }
     }
