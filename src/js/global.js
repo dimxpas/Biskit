@@ -268,7 +268,7 @@ function show_players() {
         } else {
             poisse_icon = "";
         }
-        players_list += "<p id='player_" + a + "'><span class='update-player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false); $(\"#player_" + a + " .valid-icon\").removeClass(\"hidden\");'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled placeholder='Joueur " + a + "' type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2 hidden' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + " <span class='delete-icon' onclick='deletePlayer(array_player, " + a + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
+        players_list += "<p id='player_" + a + "'><span class='update-player' onclick='$(\"#inputplayer_" + a + "\").prop(\"disabled\", false); $(\"#player_" + a + " .valid-icon\").removeClass(\"hidden\");'><i class='fa-solid fa-user-pen mr-2'></i></span> <input id='inputplayer_" + a + "' disabled placeholder='Joueur " + (a + 1) + "' type='text' value='" + array_player[a] + "'> <span class='valid-icon ml-2 hidden' onclick='input_value = $(\"#inputplayer_" + a + "\")[0].value; updatePlayer(array_player, " + a + ", input_value);'><i class='fa-regular fa-circle-check'></i></span>" + poisse_icon + " <span class='delete-icon' onclick='deletePlayer(array_player, " + a + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
         a++;
     }
     $("#player_list").html(players_list);
