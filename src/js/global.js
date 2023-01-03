@@ -21,13 +21,17 @@ jQuery(document).ready(function () {
                 if (roll1vs == 0) {
                     result1vs = randomDice();
                     // lancement du dés 1
-                    throwDices("dice_1", result1vs);
+                    throwDices("1", result1vs);
                 }
                 if (roll2vs == 0) {
                     result2vs = randomDice();
                     // lancement du dés 2
-                    throwDices("dice_2", result2vs);
+                    throwDices("2", result2vs);
                 }
+                setTimeout(function () {
+                    $('#dice_1').removeClass("spinthatdice1");
+                    $('#dice_2').removeClass("spinthatdice2");
+                }, 950);
             }
             
             if (result1vs == 1 || result1vs == 2) {
@@ -92,10 +96,14 @@ jQuery(document).ready(function () {
         diceSound.play();
         // lancement du dés 1
         result1 = randomDice(); 
-        throwDices("dice_1", result1);
+        throwDices("1", result1);
         // lancement du dés 2
         result2 = randomDice();
-        throwDices("dice_2", result2);
+        throwDices("2", result2);
+        setTimeout(function () {
+            $('#dice_1').removeClass("spinthatdice1");
+            $('#dice_2').removeClass("spinthatdice2");
+        }, 950);
 
         if ($("#player").html() == "") {
             actualPlayer = Math.floor(Math.random() * array_player.length);
@@ -405,10 +413,32 @@ function randomDice() {
 }
 // Affichage du lancer de dès
 function throwDices(id_dice, dice_number) {
-    setTimeout(function () { $("#" + id_dice).html(number_to_letter(randomDice())); }, 200);
-    setTimeout(function () { $("#" + id_dice).html(number_to_letter(randomDice())); }, 400);
-    setTimeout(function () { $("#" + id_dice).html(number_to_letter(randomDice())); }, 600);
-    setTimeout(function () { $("#" + id_dice).html(number_to_letter(dice_number)); }, 800);
+    if (dice_number == 1) {
+        x = -90;
+        y = 0;
+    }
+    if (dice_number == 2) {
+        x = 0;
+        y = 0;
+    }
+    if (dice_number == 3) {
+        x = 0;
+        y = -90;
+    }
+    if (dice_number == 4) {
+        x = 180;
+        y = 0;
+    }
+    if (dice_number == 5) {
+        x = 0;
+        y = 90;
+    }
+    if (dice_number == 6) {
+        x = 90;
+        y = 0;
+    }
+    $('#dice_' + id_dice).addClass("spinthatdice" + id_dice);
+    $('#dice_' + id_dice).css({'transform': 'rotateX(' + x + 'deg) rotateY(' + y + 'deg)'});
 }
 // affichage du dès avec fontawesome && traduction du nombre en lettre
 function number_to_letter(dice_number) {
