@@ -325,6 +325,7 @@ function deletePlayer(arrayP, indexP) {
         } else {
             $("#message").append(message_poisse);
         }
+        show_players();
     } else {
         alert("Vous ne pouvez plus supprimer de joueur (Minimum 2 joueurs)");
     }
