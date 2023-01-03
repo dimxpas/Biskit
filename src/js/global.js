@@ -247,7 +247,7 @@ function showYourRules() {
     r = 0;
     rules_list = "";
     while (r < nb_rules) {
-        rules_list += "<p id='rules_" + r + "' class='biskit-rules'><span class='update-player' onclick='$(\"#inputrules_" + r + "\").prop(\"disabled\", false); $(\"#rules_" + r + " .valid-icon\").removeClass(\"hidden\");'><i class='fa-solid fa-file-pen mr-2'></i></span> <input id='inputrules_" + r + "' disabled placeholder='Règle " + (r + 1) + "' size='60' type='text' value='" + array_rules[r] + "'> <span class='valid-icon ml-2 hidden' onclick='input_rules_value = $(\"#inputrules_" + r + "\")[0].value; updateRule(array_rules, " + r + ", input_rules_value);'><i class='fa-regular fa-circle-check'></i></span> <span class='delete-icon' onclick='deleteRule(array_rules, " + r + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
+        rules_list += "<p id='rules_" + r + "' class='biskit-rules'><span class='update-player' onclick='$(\"#inputrules_" + r + "\").prop(\"disabled\", false); $(\"#rules_" + r + " .valid-icon\").removeClass(\"hidden\");'><i class='fa-solid fa-file-pen mr-2'></i></span> <input id='inputrules_" + r + "' disabled placeholder='Règle " + (r + 1) + "' type='text' value='" + array_rules[r] + "'> <span class='valid-icon ml-2 hidden' onclick='input_rules_value = $(\"#inputrules_" + r + "\")[0].value; updateRule(array_rules, " + r + ", input_rules_value);'><i class='fa-regular fa-circle-check'></i></span> <span class='delete-icon' onclick='deleteRule(array_rules, " + r + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
         r++;
     }
     $("#rules_list").html(rules_list);
@@ -259,7 +259,7 @@ function showYourRules() {
 function addRules() {
     rules_number = $(".biskit-rules").length;
     $("#add_rules").addClass("hidden");
-    new_line_player = "<p id='rules_" + rules_number + "' class='biskit-rules'><span class='update-player' onclick='$(\"#inputrules_" + rules_number + "\").prop(\"disabled\", false);'><i class='fa-solid fa-file-pen mr-2'></i></span> <input id='inputrules_" + rules_number + "' type='text' size='60' placeholder='Règle " + (rules_number + 1) + "'> <span class='valid-icon ml-2' onclick='input_rules_value = $(\"#inputrules_" + rules_number + "\")[0].value; updateRule(array_rules, " + rules_number + ", input_rules_value);'><i class='fa-regular fa-circle-check'></i></span> <span class='delete-icon' onclick='deleteRule(array_rules, " + rules_number + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
+    new_line_player = "<p id='rules_" + rules_number + "' class='biskit-rules'><span class='update-player' onclick='$(\"#inputrules_" + rules_number + "\").prop(\"disabled\", false);'><i class='fa-solid fa-file-pen mr-2'></i></span> <input id='inputrules_" + rules_number + "' type='text' placeholder='Règle " + (rules_number + 1) + "'> <span class='valid-icon ml-2' onclick='input_rules_value = $(\"#inputrules_" + rules_number + "\")[0].value; updateRule(array_rules, " + rules_number + ", input_rules_value);'><i class='fa-regular fa-circle-check'></i></span> <span class='delete-icon' onclick='deleteRule(array_rules, " + rules_number + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
     $("#rules_list").append(new_line_player);
 }
 // modification d'une règle joueur
