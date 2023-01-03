@@ -24,13 +24,13 @@ Les règles :
 Tu n'auras donc pour jouer seulement besoin d'amis et d'alcools, je m'occupe du reste mais soit attentif sinon tu vas vite finir pompette !
 
 Version actuelle : 
-    - Jouable à plusieurs
-    - Ajouter, renommer et supprimer un joueur en cours de partie
-    - Possibilité d'avoir et de retirer la poisse
-    - Changement de sens
-    - Lancer un duel auprès d'un autre joueur
-    - Activer/Couper le son
-    - Ajouter, modifier, et supprimer des règles de joueur (règles qui n'impactent pas directement le jeu)
+  - Jouable à plusieurs
+  - Ajouter, renommer et supprimer un joueur en cours de partie
+  - Possibilité d'avoir et de retirer la poisse
+  - Changement de sens
+  - Lancer un duel auprès d'un autre joueur
+  - Activer/Couper le son
+  - Ajouter, modifier, et supprimer des règles de joueur (règles qui n'impactent pas directement le jeu)
     
 Future version :
-    - Modification du style et ajout d'animations (dés en 3d)
+  - Modification du style et ajout d'animations (dés en 3d)
