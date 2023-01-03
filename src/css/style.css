@@ -214,10 +214,10 @@ h3 {
 
 #players_btn {
 	float: left;
-	font-size: 1.5em;
+	margin-top: 1em;
 }
 
-.add-player, .add-rules {
+.add-player, .add-rules, #players_btn, #rules_btn, #volume_btn, #your_rules_btn {
 	font-size: 1.5em;
 }
 
@@ -231,7 +231,7 @@ h3 {
 
 #rules_btn, #volume_btn, #your_rules_btn {
 	float: right;
-	font-size: 1.5em;
+	margin-top: 1em;
 }
 
 [id^='inputrules_'] {
@@ -541,11 +541,24 @@ video {
 }
 
 @media (max-width: 990px) {
-    h1 {
-        font-size: 2.5em;
-    }
+	h1 {
+		font-size: 2.5em;
+	}
 
-    h2 {
-        font-size: 1.7em;
-    }
+	h2 {
+		font-size: 1.7em;
+	}
+
+	h3 {
+		font-size: 1.5em;
+	}
+
+	p {
+		font-size: 1em;
+	}
+
+	#message, .add-player, .add-rules, #players_btn, #rules_btn, #volume_btn, #your_rules_btn {
+		font-size: 1.2em;
+	}
+	
 }
