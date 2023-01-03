@@ -3,6 +3,8 @@ jQuery(document).ready(function () {
     diceSound.muted = true;
     lucky_vid = document.getElementById('luck');
     versus_vid = document.getElementById('duel');
+    array_rules = [];
+    nb_rules = 0;
     poisse = "";
 
     $("#roll_versus").on("click", function() {
@@ -102,7 +104,7 @@ jQuery(document).ready(function () {
         } else {
             $("#result_dice").html(result1 + " " + result2);
             if (result1 == 6 && result2 == 6) {
-                setTimeout(function () { $("#message").html("Distribues " + result1 + " gorgées,<br>inventes une nouvelle règle et on change de sens"); }, 1000);
+                setTimeout(function () { $("#message").html("Distribues " + result1 + " gorgées,<br><a onclick='showYourRules(); addRules();'>inventes une nouvelle règle</a> et on change de sens"); }, 1000);
                 array_player.reverse();
                 actualPlayer = array_player.indexOf(selectedPlayer);
                 setTimeout(function () { $("#luck").css("display", "block"); lucky_vid.play(); lucky_vid.onended = function () { $("#luck").css("display", "none"); }; }, 1000);
@@ -240,6 +242,52 @@ function show_rules() {
     $("#biskit_rules .modal-content").removeClass("move-down").addClass("move-up");
     $("body").css("overflow", "hidden");
 }
+// affichage des règles joueurs
+function showYourRules() {
+    r = 0;
+    rules_list = "";
+    while (r < nb_rules) {
+        rules_list += "<p id='rules_" + r + "' class='biskit-rules'><span class='update-player' onclick='$(\"#inputrules_" + r + "\").prop(\"disabled\", false); $(\"#rules_" + r + " .valid-icon\").removeClass(\"hidden\");'><i class='fa-solid fa-file-pen mr-2'></i></span> <input id='inputrules_" + r + "' disabled placeholder='Règle " + (r + 1) + "' size='60' type='text' value='" + array_rules[r] + "'> <span class='valid-icon ml-2 hidden' onclick='input_rules_value = $(\"#inputrules_" + r + "\")[0].value; updateRule(array_rules, " + r + ", input_rules_value);'><i class='fa-regular fa-circle-check'></i></span> <span class='delete-icon' onclick='deleteRule(array_rules, " + r + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
+        r++;
+    }
+    $("#rules_list").html(rules_list);
+    $("#your_biskit_rules").removeClass("hidden fade-out").addClass("fade-in");
+    $("#your_biskit_rules .modal-content").removeClass("move-down").addClass("move-up");
+    $("body").css("overflow", "hidden");
+}
+// Ajout de règles joueurs
+function addRules() {
+    rules_number = $(".biskit-rules").length;
+    $("#add_rules").addClass("hidden");
+    new_line_player = "<p id='rules_" + rules_number + "' class='biskit-rules'><span class='update-player' onclick='$(\"#inputrules_" + rules_number + "\").prop(\"disabled\", false);'><i class='fa-solid fa-file-pen mr-2'></i></span> <input id='inputrules_" + rules_number + "' type='text' size='60' placeholder='Règle " + (rules_number + 1) + "'> <span class='valid-icon ml-2' onclick='input_rules_value = $(\"#inputrules_" + rules_number + "\")[0].value; updateRule(array_rules, " + rules_number + ", input_rules_value);'><i class='fa-regular fa-circle-check'></i></span> <span class='delete-icon' onclick='deleteRule(array_rules, " + rules_number + ")'><i class='ml-2 fa-regular fa-trash-can'></i></span></p>";
+    $("#rules_list").append(new_line_player);
+}
+// modification d'une règle joueur
+function updateRule(arrayR, indexR, new_name_rules) {
+    if (new_name_rules == "") {
+        alert("Veuillez saisir une règle");
+    } else {
+        if (indexR == nb_rules) {
+            arrayR.push(new_name_rules);
+        } else {
+            arrayR[indexR] = new_name_rules;
+        }
+        array_rules = arrayR;
+        nb_rules = arrayR.length;
+        $("#add_rules").removeClass("hidden");
+        $("#rules_" + indexR + " .valid-icon").addClass("hidden");
+        $("#inputrules_" + indexR).prop("disabled", true);
+    }
+}
+// suppression d'une règle joueur
+function deleteRule(arrayR, indexR) {
+    $("#rules_" + indexR).remove();
+    arrayR.splice(indexR, 1);
+    array_rules = arrayR;
+    nb_rules = arrayR.length;
+    $("#add_rules").removeClass("hidden");
+    showYourRules();
+}
 // gestion du volume
 function toggleVolume() {
     $("#volume_up, #volume_mute").toggleClass("hidden");
@@ -285,20 +333,19 @@ function updatePlayer(arrayP, indexP, new_name) {
     } else {
         if (indexP == nb_player) {
             arrayP.push(new_name);
-            array_player = arrayP;
-            nb_player = arrayP.length;
             $("#add_player_in_game").removeClass("hidden");
         } else {
             if (poisse == arrayP[indexP]) {
                 poisse = new_name;
             }
             arrayP[indexP] = new_name;
-            array_player = arrayP;
             if (indexP == actualPlayer) {
                 selectedPlayer = new_name;
                 $("#player").html(new_name);
             }
         }
+        array_player = arrayP;
+        nb_player = arrayP.length;
         $("#player_" + indexP + " .valid-icon").addClass("hidden");
         $("#inputplayer_" + indexP).prop("disabled", true);
     }
