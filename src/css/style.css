@@ -414,7 +414,7 @@ a {
 	cursor: pointer;
 }
 
-ul {
+ul, p {
 	line-height: 1.5;
 }
 
