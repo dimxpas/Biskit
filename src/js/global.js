@@ -220,10 +220,6 @@ function checkPlayer() {
         }
     }
 }
-// suppression d'un joueur hors jeu
-function removePlayer() {
-    $(this).closest('p').remove();
-}
 // fermeture de la modal
 function closeModal() {
     $(".modal-content").removeClass("move-up").addClass("move-down");
