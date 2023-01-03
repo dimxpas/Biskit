@@ -414,7 +414,7 @@ a {
 	cursor: pointer;
 }
 
-ul, p {
+ul, p, .close {
 	line-height: 1.5;
 }
 
