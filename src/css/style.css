@@ -454,6 +454,7 @@ video {
 	opacity: 1;
 	border-radius: 5px;
 	background-color: #222222;
+        z-index: 2;
 }
 
 [class^='fa-solid fa-dice-'] {
