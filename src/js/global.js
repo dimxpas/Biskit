@@ -235,14 +235,14 @@ function openModal(id_modal) {
     $("#" + id_modal).removeClass("hidden fade-out").addClass("fade-in");
     $("#" + id_modal + " .modal-content").removeClass("move-down").addClass("move-up");
     $("body").css("overflow", "hidden");
-    $(".dice-align").addClass("hidden");
+    $(".dice-align").fadeOut(100);
 }
 // fermeture de la modal
 function closeModal() {
     $(".modal-content").removeClass("move-up").addClass("move-down");
     $(".modal").removeClass("fade-in").addClass("fade-out");
     $("body").css("overflow", "auto");
-    $(".dice-align").removeClass("hidden");
+    $(".dice-align").fadeIn();
     setTimeout(() => {
         $(".modal").addClass("hidden");
         $("#add_player_in_game, #add_rules").removeClass("hidden");
