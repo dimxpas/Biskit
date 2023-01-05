@@ -17,7 +17,6 @@ jQuery(document).ready(function () {
 
         function throwDiceVersus(v) {
             if (roll1vs == 0 || roll2vs == 0) {
-                diceSound.play();
                 if (roll1vs == 0) {
                     result1vs = randomDice();
                     // lancement du dés 1
@@ -93,7 +92,6 @@ jQuery(document).ready(function () {
 
     $("#roll").on("click", function() {
         $("#message").html("");
-        diceSound.play();
         // lancement du dés 1
         result1 = randomDice(); 
         throwDices("1", result1);
@@ -436,6 +434,7 @@ function throwDices(id_dice, dice_number) {
         x = 90;
         y = 0;
     }
+    diceSound.play();
     $('#dice_' + id_dice).addClass("spinthatdice" + id_dice);
     $('#dice_' + id_dice).css({'transform': 'rotateX(' + x + 'deg) rotateY(' + y + 'deg)'});
 }
