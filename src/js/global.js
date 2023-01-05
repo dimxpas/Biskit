@@ -230,25 +230,28 @@ function checkPlayer() {
         }
     }
 }
+// ouverture de la modal
+function openModal(id_modal) {
+    $("#" + id_modal).removeClass("hidden fade-out").addClass("fade-in");
+    $("#" + id_modal + " .modal-content").removeClass("move-down").addClass("move-up");
+    $("body").css("overflow", "hidden");
+    $(".dice-align").addClass("hidden");
+}
 // fermeture de la modal
 function closeModal() {
     $(".modal-content").removeClass("move-up").addClass("move-down");
     $(".modal").removeClass("fade-in").addClass("fade-out");
     $("body").css("overflow", "auto");
+    $(".dice-align").removeClass("hidden");
     setTimeout(() => {
         $(".modal").addClass("hidden");
-    }, 500);
+        $("#add_player_in_game, #add_rules").removeClass("hidden");
+    }, 450);
 }
 window.onclick = function (event) {
     if (event.target.classList[0] == "modal") {
         closeModal();
     }
-}
-// affichage des règles
-function show_rules() {
-    $("#biskit_rules").removeClass("hidden fade-out").addClass("fade-in");
-    $("#biskit_rules .modal-content").removeClass("move-down").addClass("move-up");
-    $("body").css("overflow", "hidden");
 }
 // affichage des règles joueurs
 function showYourRules() {
@@ -259,9 +262,7 @@ function showYourRules() {
         r++;
     }
     $("#rules_list").html(rules_list);
-    $("#your_biskit_rules").removeClass("hidden fade-out").addClass("fade-in");
-    $("#your_biskit_rules .modal-content").removeClass("move-down").addClass("move-up");
-    $("body").css("overflow", "hidden");
+    openModal("your_biskit_rules");
 }
 // Ajout de règles joueurs
 function addRules() {
@@ -324,9 +325,7 @@ function show_players() {
         a++;
     }
     $("#player_list").html(players_list);
-    $("#biskit_players").removeClass("hidden fade-out").addClass("fade-in");
-    $("#biskit_players .modal-content").removeClass("move-down").addClass("move-up");
-    $("body").css("overflow", "hidden");
+    openModal("biskit_players");
 }
 // Ajout de joueurs hors jeu
 function addPlayerInGame() {
