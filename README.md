@@ -31,6 +31,7 @@ Version actuelle :
   - Lancer un duel auprès d'un autre joueur
   - Activer/Couper le son
   - Ajouter, modifier, et supprimer des règles de joueur (règles qui n'impactent pas directement le jeu)
+  - Dès en 3d
     
 Future version :
-  - Modification du style et ajout d'animations (dés en 3d)
+  - Modification du style et ajout d'animations
