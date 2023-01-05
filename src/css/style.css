@@ -123,6 +123,10 @@ body {
 	margin-left: auto;
 }
 
+header {
+	height: 150px;
+}
+
 .row {
 	display: -ms-flexbox;
 	display: flex;
@@ -192,7 +196,14 @@ h3 {
     	color: #f0a637;
 }
 
-.title2 {
+.title-biskit {
+	position: absolute;
+	margin-right: auto;
+	margin-left: auto;
+	right: 0;
+	left: 0;
+	margin-top: 20px;
+	width: fit-content;
 	color: #42c52e;
 	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #42c52e, 0 0 35px #42c52e, 0 0 40px #42c52e, 0 0 50px #42c52e, 0 0 75px #42c52e;
 }
@@ -213,7 +224,6 @@ h3 {
 
 #players_btn {
 	float: left;
-	margin-top: 1em;
 }
 
 .add-player, .add-rules, #players_btn, #rules_btn, #volume_btn, #your_rules_btn {
@@ -230,7 +240,10 @@ h3 {
 
 #rules_btn, #volume_btn, #your_rules_btn {
 	float: right;
-	margin-top: 1em;
+}
+
+#players_btn, #rules_btn, #volume_btn {
+	margin-top: 1.5em;
 }
 
 [id^='inputrules_'] {
