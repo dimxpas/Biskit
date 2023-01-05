@@ -9,6 +9,12 @@
 	src: url("../fonts/Raleway/Raleway-Light.ttf") format("truetype");
 }
 
+@font-face
+{
+	font-family: 'ethnocentric';
+	src: url('../fonts/ethnocentric/ethnocentric-rg.ttf');
+}
+
 /* screen */
 @media screen and (max-width: 576px) {
 	.modal-content {
@@ -99,6 +105,29 @@
 	}
 }
 
+
+@media (max-width: 990px) {
+	h1 {
+		font-size: 2.5em;
+	}
+
+	h2 {
+		font-size: 1.7em;
+	}
+
+	h3 {
+		font-size: 1.5em;
+	}
+
+	p {
+		font-size: 1em;
+	}
+
+	#message, .add-player, .add-rules, #players_btn, #rules_btn, #volume_btn, #your_rules_btn {
+		font-size: 1.2em;
+	}
+}
+
 /* Body */
 body {
 	margin: 0;
@@ -121,10 +150,6 @@ body {
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
-}
-
-header {
-	height: 150px;
 }
 
 .row {
@@ -652,25 +677,12 @@ video {
 	border: 2px solid;
 }
 
-@media (max-width: 990px) {
-	h1 {
-		font-size: 2.5em;
-	}
+/* footer */
+.made-by {
+	font-family: 'ethnocentric';
+	font-weight: 100;
+}
 
-	h2 {
-		font-size: 1.7em;
-	}
-
-	h3 {
-		font-size: 1.5em;
-	}
-
-	p {
-		font-size: 1em;
-	}
-
-	#message, .add-player, .add-rules, #players_btn, #rules_btn, #volume_btn, #your_rules_btn {
-		font-size: 1.2em;
-	}
-	
+.small-text-footer {
+	font-size: 0.5em;
 }
