@@ -14,31 +14,32 @@
 
 <body>
   <div class="container">
-    <header>
+    <!-- Header -->
+    <header class="mb-5">
       <div id="players_btn" class="hidden" title="Liste des joueurs" onclick='show_players()'><i class="fa-solid fa-users"></i></div>
       <div id="rules_btn" title="Les règles du Biskit" onclick="openModal('biskit_rules')"><i class="fa-solid fa-circle-info"></i></div>
       <div id="volume_btn" class="mr-3" onclick="toggleVolume()"><span id="volume_mute" title="Activer le son"><i class="fa-solid fa-volume-xmark"></i></span><span id="volume_up" class="hidden" title="Couper le son"><i class="fa-solid fa-volume-high"></i></span></div>
       <h1 class="title-biskit">BISKIT</h1>
     </header>
-    
+    <!-- Ajout de personnes pré-partie -->
     <div id="nb_person" class="text-center">
       <h3 class="title mb-4">Liste des joueurs</h3>
       <span id="add_player" class="add-player" title="Ajouter un joueur" onclick="addPlayer()"><i class="fa-solid fa-user-plus"></i></span>
       <p class="mt-3"><button class="btn" onclick="checkPlayer()"><i class="fa-solid fa-circle-play"></i> Commencer la partie</button></p>
     </div>
-    
+    <!-- Block jeu -->
     <div id="start_play" class="text-center">
       <div id="your_rules_btn" title="Vos règles" class="hidden" onclick="showYourRules()"><i class="fa-solid fa-rectangle-list"></i></div>
       <h3 class="title" id="player"></h3>
       <h3 id="message" class="mb-3"> </h3>
-  
+      <!-- Vidéos -->
       <video autoplay muted="true" id="luck" playsinline class="center">
         <source src="src/videos/lucky-airplane.mp4" type="video/mp4">
       </video>
       <video autoplay muted="true" id="duel" playsinline class="center">
         <source src="src/videos/duduel.mp4" type="video/mp4">
       </video>
-  
+      <!-- Block des dés -->
       <div id="dices_block" class="hidden">
         <div class="dices-block">
           <div class="dice-align">
@@ -89,8 +90,8 @@
         <button class="btn mt-3" id="roll"><i class="fa-solid fa-dice"></i> Lancer</button><button class="btn mt-3 hidden" id="roll_versus"><i class="fa-solid fa-dice"></i> Lancer mes 3 essais</button>
       </div>
     </div>
-    
-    <!-- liste des joueurs  -->
+    <!-- Modals -->
+    <!-- Liste des joueurs -->
     <div id="biskit_players" class="modal hidden">
       <div class="modal-content text-center">
         <span class='close'><i class='fa-solid fa-xmark'></i></span>
@@ -99,8 +100,7 @@
         <span id="add_player_in_game" class="add-player" title="Ajouter un joueur" onclick="addPlayerInGame()"><i class="fa-solid fa-user-plus"></i></span>
       </div>
     </div>
-    
-    <!-- règles -->
+    <!-- Les règles du Biskit -->
     <div id="biskit_rules" class="modal hidden">
       <div class="modal-content">
         <span class='close'><i class='fa-solid fa-xmark'></i></span>
@@ -128,8 +128,7 @@
         <p><i class="fa-solid fa-wine-glass"></i> L'abus d'alcool est dangereux pour la santé. A consommer avec modération.</p>
       </div>
     </div>
-    
-    <!-- vos règles  -->
+    <!-- Vos règles  -->
     <div id="your_biskit_rules" class="modal hidden text-center">
       <div class="modal-content">
         <span class="close"><i class="fa-solid fa-xmark"></i></span>
@@ -141,7 +140,10 @@
       </div>
     </div>
   </div>
-
+  <!-- Footer -->
+  <footer class="mt-5">
+    <p class='text-center made-by'><span class="small-text-footer">Made by</span> <a class="creator_link" href="https://dimxpas.github.io" target="_blank">Dimitri Pasquier</a> <span class="small-text-footer">with passion</span></p>
+  </footer>
 </body>
 
 </html>
