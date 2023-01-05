@@ -105,29 +105,6 @@
 	}
 }
 
-
-@media (max-width: 990px) {
-	h1 {
-		font-size: 2.5em;
-	}
-
-	h2 {
-		font-size: 1.7em;
-	}
-
-	h3 {
-		font-size: 1.5em;
-	}
-
-	p {
-		font-size: 1em;
-	}
-
-	#message, .add-player, .add-rules, #players_btn, #rules_btn, #volume_btn, #your_rules_btn {
-		font-size: 1.2em;
-	}
-}
-
 /* Body */
 body {
 	margin: 0;
@@ -685,4 +662,26 @@ video {
 
 .small-text-footer {
 	font-size: 0.5em;
+}
+
+@media (max-width: 990px) {
+	h1 {
+		font-size: 2.5em;
+	}
+
+	h2 {
+		font-size: 1.7em;
+	}
+
+	h3 {
+		font-size: 1.5em;
+	}
+
+	p {
+		font-size: 1em;
+	}
+
+	#message, .add-player, .add-rules, #players_btn, #rules_btn, #volume_btn, #your_rules_btn {
+		font-size: 1.2em;
+	}
 }
