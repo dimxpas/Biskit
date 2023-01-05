@@ -300,11 +300,11 @@ function toggleVolume() {
     $("#volume_up, #volume_mute").toggleClass("hidden");
     if (diceSound.muted == false) {
         diceSound.muted = true;
-        lucky_vid.muted = true;
+//         lucky_vid.muted = true;
         versus_vid.muted = true;
     } else {
         diceSound.muted = false;
-        lucky_vid.muted = false;
+//         lucky_vid.muted = false;
         versus_vid.muted = false;
     }
 }
