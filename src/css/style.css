@@ -246,7 +246,7 @@ h3 {
 }
 
 #players_btn, #rules_btn, #volume_btn {
-	margin-top: 1.5em;
+	margin-top: 0.5em;
 }
 
 [id^='inputrules_'] {
